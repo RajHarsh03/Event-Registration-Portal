@@ -1,202 +1,156 @@
-/* ── Page layout ────────────────────────────────────── */
-.login-page {
+.page {
   min-height: 100vh;
+  background-color: #f5f7fa;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar — matches dashboard */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e4e9;
+  padding: 0 2rem;
+  height: 58px;
   display: flex;
-  background-color: #e8edf2;
+  align-items: center;
 }
 
-/* ── Left panel ─────────────────────────────────────── */
-.left-section {
-  width: 42%;
-  background: linear-gradient(160deg, #00bcd4 0%, #0097a7 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 3rem 3.5rem;
-  clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
+.brand {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #2c3e50;
 }
 
-.brand-title {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #1a2a3a;
-  line-height: 1.1;
-  letter-spacing: 0.03em;
-  margin: 0 0 0.15rem;
-}
-
-.brand-subtitle {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.03em;
-  margin: 0 0 1.25rem;
-}
-
-.brand-desc {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.6;
-  max-width: 280px;
-  margin: 0;
-}
-
-/* ── Right panel ────────────────────────────────────── */
-.right-section {
-  flex: 1;
+/* Centered card */
+.main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 4rem 1rem;
 }
 
-/* ── Card ───────────────────────────────────────────── */
-.login-card {
-  background: #f4f6f8;
-  border-radius: 12px;
-  padding: 2.25rem 2rem;
+.card {
+  background: #ffffff;
+  border: 1px solid #e0e4e9;
+  border-radius: 8px;
+  padding: 2rem 2.25rem;
   width: 100%;
-  max-width: 380px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  max-width: 400px;
 }
 
-.login-heading {
-  font-size: 1.1rem;
+h3 {
+  font-size: 1.05rem;
   font-weight: 700;
-  color: #1a2a3a;
+  color: #2c3e50;
   margin: 0 0 1.5rem;
 }
 
-/* ── Form fields ────────────────────────────────────── */
-.form-field {
+/* Form fields */
+.form-group {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 1.1rem;
 }
 
 label {
-  display: block;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #555;
+  color: #4b5563;
   margin-bottom: 0.35rem;
 }
 
 input {
-  width: 100%;
-  padding: 0.65rem 0.85rem;
-  border: 1.5px solid #dde2e8;
-  border-radius: 6px;
-  font-size: 0.92rem;
-  color: #222;
-  background: #ffffff;
+  padding: 0.55rem 0.75rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  color: #1f2937;
   outline: none;
-  box-sizing: border-box;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s;
 }
 
 input:focus {
-  border-color: #00bcd4;
-  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.15);
+  border-color: #5a67d8;
 }
 
 input.input-error {
-  border-color: #e53e3e;
+  border-color: #ef4444;
 }
 
 input::placeholder {
-  color: #b0b8c1;
+  color: #9ca3af;
 }
 
 .error-text {
-  display: block;
-  font-size: 0.78rem;
-  color: #e53e3e;
-  margin-top: 0.3rem;
+  font-size: 0.75rem;
+  color: #ef4444;
+  margin-top: 0.25rem;
 }
 
-/* ── Error banner ───────────────────────────────────── */
+/* Invalid credentials */
 .error-banner {
   background: #fff5f5;
-  border: 1px solid #fed7d7;
-  color: #c53030;
-  border-radius: 6px;
-  padding: 0.55rem 0.85rem;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  border-radius: 5px;
+  padding: 0.5rem 0.75rem;
   font-size: 0.83rem;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
-/* ── Login button ───────────────────────────────────── */
-.login-btn {
+/* Login button */
+.btn-login {
   width: 100%;
-  padding: 0.72rem;
-  background-color: #00bcd4;
+  padding: 0.6rem;
+  background-color: #5a67d8;
   color: #ffffff;
   border: none;
-  border-radius: 6px;
-  font-size: 0.95rem;
+  border-radius: 5px;
+  font-size: 0.92rem;
   font-weight: 600;
   cursor: pointer;
-  letter-spacing: 0.03em;
   transition: background-color 0.2s;
   margin-top: 0.25rem;
 }
 
-.login-btn:hover:not(:disabled) {
-  background-color: #0097a7;
+.btn-login:hover:not(:disabled) {
+  background-color: #4c51bf;
 }
 
-.login-btn:disabled {
-  background-color: #b2dfe6;
+.btn-login:disabled {
+  background-color: #c7d2fe;
   cursor: not-allowed;
 }
 
-/* ── Demo access block ──────────────────────────────── */
+/* Demo access */
 .demo-access {
-  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
   padding-top: 1rem;
-  border-top: 1px solid #dde2e8;
+  border-top: 1px solid #e0e4e9;
 }
 
 .demo-label {
   font-size: 0.72rem;
   font-weight: 700;
-  color: #999;
-  letter-spacing: 0.08em;
-  margin: 0 0 0.5rem;
+  color: #9ca3af;
+  letter-spacing: 0.06em;
 }
 
 .demo-cred {
   font-size: 0.83rem;
-  color: #555;
-  margin: 0;
+  color: #6b7280;
 }
 
 .demo-cred strong {
   display: inline-block;
-  background: #e0f7fa;
-  color: #0097a7;
-  font-size: 0.72rem;
+  background: #ede9fe;
+  color: #5a67d8;
+  font-size: 0.7rem;
   font-weight: 700;
   padding: 0.1rem 0.45rem;
   border-radius: 4px;
-  letter-spacing: 0.05em;
-  margin-right: 0.4rem;
-}
-
-/* ── Responsive ─────────────────────────────────────── */
-@media (max-width: 640px) {
-  .login-page {
-    flex-direction: column;
-  }
-
-  .left-section {
-    width: 100%;
-    clip-path: none;
-    padding: 2rem 1.5rem;
-    align-items: center;
-    text-align: center;
-  }
-
-  .brand-desc {
-    max-width: 100%;
-  }
+  letter-spacing: 0.04em;
+  margin-right: 0.35rem;
 }

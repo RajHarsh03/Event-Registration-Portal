@@ -1,21 +1,17 @@
-<div class="login-page">
+<div class="page">
 
-  <div class="left-section">
-    <h1 class="brand-title">EVENT REGISTRATION</h1>
-    <h2 class="brand-subtitle">PORTAL</h2>
-    <p class="brand-desc">A centralized platform for managing event registrations and participant records.</p>
-  </div>
+  <header class="navbar">
+    <span class="brand">Event Registration Portal</span>
+  </header>
 
-  <div class="right-section">
+  <div class="main">
+    <div class="card">
 
-    <div class="login-card">
-
-      <h3 class="login-heading">User Login</h3>
+      <h3>Login</h3>
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
 
-        <!-- Username -->
-        <div class="form-field">
+        <div class="form-group">
           <label for="username">Username</label>
           <input
             id="username"
@@ -29,14 +25,13 @@
           </span>
         </div>
 
-        <!-- Password -->
-        <div class="form-field">
+        <div class="form-group">
           <label for="password">Password</label>
           <input
             id="password"
             type="password"
             formControlName="password"
-            placeholder="Enter your password"
+            placeholder="Enter password"
             [class.input-error]="password?.invalid && password?.touched"
           />
           <span class="error-text" *ngIf="password?.invalid && password?.touched">
@@ -44,24 +39,22 @@
           </span>
         </div>
 
-        <!-- Invalid credentials message -->
         <div class="error-banner" *ngIf="loginError">
           Invalid username or password.
         </div>
 
-        <button type="submit" [disabled]="loginForm.invalid" class="login-btn">
+        <button type="submit" [disabled]="loginForm.invalid" class="btn-login">
           Login
         </button>
 
       </form>
 
       <div class="demo-access">
-        <p class="demo-label">DEMO ACCESS</p>
-        <p class="demo-cred"><strong>USER</strong> user / user123</p>
+        <span class="demo-label">DEMO ACCESS</span>
+        <span class="demo-cred"><strong>USER</strong> user / user123</span>
       </div>
 
     </div>
-
   </div>
 
 </div>
