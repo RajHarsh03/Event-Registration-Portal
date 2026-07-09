@@ -1,51 +1,97 @@
-.dashboard-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.page {
   min-height: 100vh;
-  background-color: #f0f4f8;
+  background-color: #f7f8fa;
+  font-family: Arial, sans-serif;
 }
 
-.dashboard-card {
-  background: #ffffff;
-  padding: 2.5rem 3rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  max-width: 480px;
-  width: 100%;
-}
-
-h2 {
-  color: #1a1a2e;
-  font-size: 1.8rem;
-  margin-bottom: 0.75rem;
-}
-
-p {
-  color: #555;
-  margin-bottom: 2rem;
-  font-size: 1rem;
-}
-
-.nav-section {
+/* Navbar */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #dde1e7;
+  padding: 0 2rem;
+  height: 56px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
+}
+
+.nav-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.btn-logout {
+  background-color: #ffffff;
+  color: #e05252;
+  border: 1.5px solid #e05252;
+  border-radius: 5px;
+  padding: 0.35rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: #e05252;
+  color: #ffffff;
+}
+
+/* Content area */
+.content {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.welcome h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 0.4rem;
+}
+
+.welcome p {
+  font-size: 0.92rem;
+  color: #666;
+  margin: 0 0 2rem;
+}
+
+/* Card */
+.card {
+  background: #ffffff;
+  border: 1px solid #dde1e7;
+  border-radius: 8px;
+  padding: 1.75rem 2rem;
+}
+
+.card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 0.5rem;
+}
+
+.card p {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
 }
 
 .btn-primary {
   display: inline-block;
-  padding: 0.75rem 2rem;
-  background-color: #4a4a8a;
-  color: white;
+  padding: 0.55rem 1.4rem;
+  background-color: #3a86ff;
+  color: #ffffff;
   text-decoration: none;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
   transition: background-color 0.2s;
 }
 
 .btn-primary:hover {
-  background-color: #3a3a7a;
+  background-color: #2563eb;
 }

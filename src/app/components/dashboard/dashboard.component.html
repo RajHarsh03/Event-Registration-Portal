@@ -1,14 +1,23 @@
-<div class="dashboard-container">
-  <div class="dashboard-card">
+<div class="page">
 
-    <h2>Dashboard</h2>
-    <p>Welcome! Manage your event registrations from here.</p>
+  <header class="navbar">
+    <span class="nav-title">Event Registration Portal</span>
+    <button class="btn-logout" (click)="logout()">Logout</button>
+  </header>
 
-    <div class="nav-section">
-      <a routerLink="/event-registration" class="btn-primary">
-        Go to Event Registration
-      </a>
+  <div class="content">
+
+    <div class="welcome">
+      <h2>Dashboard</h2>
+      <p>Welcome! Use the button below to manage event registrations.</p>
+    </div>
+
+    <div class="card">
+      <h3>Event Registrations</h3>
+      <p>Register new participants, view all entries, and delete records.</p>
+      <a routerLink="/event-registration" class="btn-primary">Go to Registrations</a>
     </div>
 
   </div>
+
 </div>
