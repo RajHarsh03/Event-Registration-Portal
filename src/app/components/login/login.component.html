@@ -1,64 +1,66 @@
-<div class="login-wrapper">
+<div class="login-page">
 
-  <div class="login-card">
+  <div class="left-section">
+    <h1 class="brand-title">EVENT REGISTRATION</h1>
+    <h2 class="brand-subtitle">PORTAL</h2>
+    <p class="brand-desc">A centralized platform for managing event registrations and participant records.</p>
+  </div>
 
-    <!-- Logo / Brand -->
-    <div class="brand">
-      <div class="brand-icon">&#128197;</div>
-      <h1>Event Registration Portal</h1>
-      <p class="brand-sub">Sign in to manage your events</p>
-    </div>
+  <div class="right-section">
 
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="login-card">
 
-      <!-- Username -->
-      <div class="field" [class.field--error]="username?.invalid && username?.touched">
-        <label for="username">Username</label>
-        <div class="input-wrap">
-          <span class="input-icon">&#128100;</span>
+      <h3 class="login-heading">User Login</h3>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <!-- Username -->
+        <div class="form-field">
+          <label for="username">Username</label>
           <input
             id="username"
             type="text"
             formControlName="username"
-            placeholder="Enter your username"
-            autocomplete="username"
+            placeholder="Enter username"
+            [class.input-error]="username?.invalid && username?.touched"
           />
+          <span class="error-text" *ngIf="username?.invalid && username?.touched">
+            Username is required.
+          </span>
         </div>
-        <span class="error-msg" *ngIf="username?.invalid && username?.touched">
-          Username is required.
-        </span>
-      </div>
 
-      <!-- Password -->
-      <div class="field" [class.field--error]="password?.invalid && password?.touched">
-        <label for="password">Password</label>
-        <div class="input-wrap">
-          <span class="input-icon">&#128274;</span>
+        <!-- Password -->
+        <div class="form-field">
+          <label for="password">Password</label>
           <input
             id="password"
             type="password"
             formControlName="password"
             placeholder="Enter your password"
-            autocomplete="current-password"
+            [class.input-error]="password?.invalid && password?.touched"
           />
+          <span class="error-text" *ngIf="password?.invalid && password?.touched">
+            Password is required.
+          </span>
         </div>
-        <span class="error-msg" *ngIf="password?.invalid && password?.touched">
-          Password is required.
-        </span>
+
+        <!-- Invalid credentials message -->
+        <div class="error-banner" *ngIf="loginError">
+          Invalid username or password.
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid" class="login-btn">
+          Login
+        </button>
+
+      </form>
+
+      <div class="demo-access">
+        <p class="demo-label">DEMO ACCESS</p>
+        <p class="demo-cred"><strong>USER</strong> user / user123</p>
       </div>
 
-      <!-- Invalid credentials alert -->
-      <div class="alert" *ngIf="loginError">
-        <span>&#9888;</span> Invalid username or password.
-      </div>
-
-      <button type="submit" [disabled]="loginForm.invalid" class="btn-login">
-        Sign In
-      </button>
-
-    </form>
-
-    <p class="hint">Use <code>user</code> / <code>user123</code></p>
+    </div>
 
   </div>
 
