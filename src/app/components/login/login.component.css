@@ -1,97 +1,173 @@
-.login-container {
+/* ── Layout ─────────────────────────────────────────── */
+.login-wrapper {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #f0f4f8;
+  background: linear-gradient(135deg, #1a1a4e 0%, #4a4a8a 60%, #7b6fc4 100%);
+  padding: 1rem;
 }
 
+/* ── Card ───────────────────────────────────────────── */
 .login-card {
   background: #ffffff;
-  padding: 2rem 2.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 2.5rem 2.25rem 2rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-h2 {
+/* ── Brand section ──────────────────────────────────── */
+.brand {
   text-align: center;
+  margin-bottom: 2rem;
+}
+
+.brand-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.brand h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
   color: #1a1a2e;
-  font-size: 1.3rem;
-  margin-bottom: 0.25rem;
+  margin: 0 0 0.35rem;
+  line-height: 1.3;
 }
 
-h3 {
-  text-align: center;
-  color: #4a4a8a;
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
+.brand-sub {
+  font-size: 0.875rem;
+  color: #777;
+  margin: 0;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
+/* ── Field ──────────────────────────────────────────── */
+.field {
   margin-bottom: 1.25rem;
 }
 
 label {
-  font-size: 0.875rem;
-  font-weight: 600;
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #444;
   margin-bottom: 0.4rem;
-  color: #333;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-input {
-  padding: 0.6rem 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 0.95rem;
-  outline: none;
-  transition: border-color 0.2s;
+/* input wrapper with icon */
+.input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fafafa;
 }
 
-input:focus {
+.input-wrap:focus-within {
   border-color: #4a4a8a;
+  box-shadow: 0 0 0 3px rgba(74, 74, 138, 0.15);
+  background: #fff;
 }
 
-input.invalid {
+.field--error .input-wrap {
   border-color: #e53e3e;
 }
 
-.error-msg {
-  color: #e53e3e;
-  font-size: 0.8rem;
-  margin-top: 0.3rem;
-  display: block;
+.field--error .input-wrap:focus-within {
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15);
 }
 
-.btn-primary {
-  width: 100%;
-  padding: 0.7rem;
-  background-color: #4a4a8a;
-  color: white;
-  border: none;
-  border-radius: 5px;
+.input-icon {
+  padding: 0 0.75rem;
   font-size: 1rem;
+  color: #999;
+  flex-shrink: 0;
+}
+
+input {
+  flex: 1;
+  padding: 0.65rem 0.75rem 0.65rem 0;
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  color: #222;
+  outline: none;
+}
+
+input::placeholder {
+  color: #bbb;
+}
+
+/* ── Validation error ───────────────────────────────── */
+.error-msg {
+  display: block;
+  color: #e53e3e;
+  font-size: 0.78rem;
+  margin-top: 0.35rem;
+  padding-left: 0.25rem;
+}
+
+/* ── Invalid credentials alert ─────────────────────── */
+.alert {
+  background: #fff5f5;
+  border: 1px solid #fed7d7;
+  color: #c53030;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+/* ── Submit button ──────────────────────────────────── */
+.btn-login {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(135deg, #4a4a8a, #7b6fc4);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  margin-top: 0.5rem;
-  transition: background-color 0.2s;
+  letter-spacing: 0.03em;
+  transition: opacity 0.2s, transform 0.1s;
+  margin-top: 0.25rem;
 }
 
-.btn-primary:hover:not(:disabled) {
-  background-color: #3a3a7a;
+.btn-login:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-.btn-primary:disabled {
-  background-color: #a0a0c0;
+.btn-login:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-login:disabled {
+  background: #c5c5d8;
   cursor: not-allowed;
 }
 
+/* ── Hint ───────────────────────────────────────────── */
 .hint {
   text-align: center;
   font-size: 0.8rem;
-  color: #888;
-  margin-top: 1rem;
+  color: #999;
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+}
+
+.hint code {
+  background: #f3f0ff;
+  color: #4a4a8a;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.82rem;
 }

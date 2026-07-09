@@ -30,9 +30,8 @@ export class LoginComponent implements OnInit {
 
     const { username, password } = this.loginForm.value;
 
-    // Hardcoded credentials — any valid form submits to dashboard
-    // viva credential: admin / admin123
-    if (username === 'admin' && password === 'admin123') {
+    // Hardcoded credentials for viva: user / user123
+    if (username === 'user' && password === 'user123') {
       this.loginError = false;
       this.router.navigate(['/dashboard']);
     } else {
