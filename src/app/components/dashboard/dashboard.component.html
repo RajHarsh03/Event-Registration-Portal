@@ -1,23 +1,120 @@
 <div class="page">
 
+  <!-- Navbar -->
   <header class="navbar">
-    <span class="nav-title">Event Registration Portal</span>
-    <button class="btn-logout" (click)="logout()">Logout</button>
+    <div class="navbar-left">
+      <span class="brand">Event Management</span>
+      <nav class="nav-tabs">
+        <a class="nav-link" [class.active]="activeTab === 'registered'" (click)="setTab('registered')">Registered</a>
+        <a class="nav-link" [class.active]="activeTab === 'register'" (click)="setTab('register')">Register Participant</a>
+      </nav>
+    </div>
+    <div class="navbar-right">
+      <button class="btn-register-new" (click)="setTab('register')">Register New</button>
+      <button class="btn-logout" (click)="logout()">Logout</button>
+    </div>
   </header>
 
-  <div class="content">
+  <!-- Main -->
+  <main class="main">
 
-    <div class="welcome">
-      <h2>Dashboard</h2>
-      <p>Welcome! Use the button below to manage event registrations.</p>
+    <!-- Register Form Tab -->
+    <div *ngIf="activeTab === 'register'" class="card">
+      <h3>Register Participant</h3>
+
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="participantName">Participant Name</label>
+            <input id="participantName" type="text" formControlName="participantName"
+              placeholder="Enter full name"
+              [class.input-error]="participantName?.invalid && participantName?.touched" />
+            <span class="error-text" *ngIf="participantName?.invalid && participantName?.touched">
+              Name is required.
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email"
+              placeholder="Enter email address"
+              [class.input-error]="email?.invalid && email?.touched" />
+            <span class="error-text" *ngIf="email?.touched">
+              <span *ngIf="email?.errors?.['required']">Email is required.</span>
+              <span *ngIf="email?.errors?.['email']">Enter a valid email.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="eventName">Event Name</label>
+            <input id="eventName" type="text" formControlName="eventName"
+              placeholder="Enter event name"
+              [class.input-error]="eventName?.invalid && eventName?.touched" />
+            <span class="error-text" *ngIf="eventName?.invalid && eventName?.touched">
+              Event name is required.
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="mobileNumber">Mobile Number</label>
+            <input id="mobileNumber" type="text" formControlName="mobileNumber"
+              placeholder="10-digit mobile number"
+              [class.input-error]="mobileNumber?.invalid && mobileNumber?.touched" />
+            <span class="error-text" *ngIf="mobileNumber?.touched">
+              <span *ngIf="mobileNumber?.errors?.['required']">Mobile number is required.</span>
+              <span *ngIf="mobileNumber?.errors?.['pattern']">Must be 10 digits.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" [disabled]="registrationForm.invalid" class="btn-submit">
+            Register
+          </button>
+          <button type="button" class="btn-cancel" (click)="setTab('registered')">Cancel</button>
+        </div>
+
+      </form>
     </div>
 
-    <div class="card">
-      <h3>Event Registrations</h3>
-      <p>Register new participants, view all entries, and delete records.</p>
-      <a routerLink="/event-registration" class="btn-primary">Go to Registrations</a>
+    <!-- Registered Participants Tab -->
+    <div *ngIf="activeTab === 'registered'" class="card">
+      <div class="table-header">
+        <h3>Registered Participants List</h3>
+        <span class="total-badge">Total: {{ registrations.length }}</span>
+      </div>
+
+      <p class="empty-msg" *ngIf="registrations.length === 0">
+        No participants registered yet.
+      </p>
+
+      <table *ngIf="registrations.length > 0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>EVENT NAME</th>
+            <th>MOBILE NUMBER</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reg of registrations; let i = index">
+            <td class="col-num">{{ i + 1 }}</td>
+            <td class="col-name">{{ reg.participantName }}</td>
+            <td>{{ reg.email }}</td>
+            <td>{{ reg.eventName }}</td>
+            <td>{{ reg.mobileNumber }}</td>
+            <td><button class="btn-delete" (click)="onDelete(reg.id)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-  </div>
+  </main>
 
 </div>
