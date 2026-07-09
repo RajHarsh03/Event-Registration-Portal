@@ -1,1 +1,53 @@
-<p>login works</p>
+<div class="login-container">
+  <div class="login-card">
+
+    <h2>Event Registration Portal</h2>
+    <h3>Login</h3>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <!-- Username -->
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          placeholder="Enter username"
+          [class.invalid]="username?.invalid && username?.touched"
+        />
+        <span class="error-msg" *ngIf="username?.invalid && username?.touched">
+          Username is required.
+        </span>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Enter password"
+          [class.invalid]="password?.invalid && password?.touched"
+        />
+        <span class="error-msg" *ngIf="password?.invalid && password?.touched">
+          Password is required.
+        </span>
+      </div>
+
+      <!-- Wrong credentials error -->
+      <span class="error-msg" *ngIf="loginError">
+        Invalid username or password.
+      </span>
+
+      <button type="submit" [disabled]="loginForm.invalid" class="btn-primary">
+        Login
+      </button>
+
+    </form>
+
+    <p class="hint">Use <strong>admin</strong> / <strong>admin123</strong></p>
+
+  </div>
+</div>
